@@ -1,3 +1,34 @@
+# Instructions
+
+The pokemon api can be found here:
+https://pokeapi.co/
+
+
+-----------------------------------------
+
+    []                             []
+    []                             []
+    []      [  ]         [  ]      []
+    []           Battle!           []
+    []       W             L       []
+    []                             []
+
+-----------------------------------------
+
+Core Requirements:
+
+- Create a single page app that lists pokemon images on both the left and the right side
+- Select one pokemon from each side. Their images will display in the center area.
+- Click the Battle! button.
+- Display a winner (whichever pokemon has the higher attack stat)
+- (See above diagram for general layout)
+
+
+Feel free to install any packages you need.
+
+----
+
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
