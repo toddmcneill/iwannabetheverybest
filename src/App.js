@@ -1,24 +1,30 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, {useState, useEffect} from 'react';
+import PokemonList from './PokemonList';
 import './App.css';
 
 function App() {
+  const [leftPokemonData, setLeftPokemonData] = useState([])
+  const [rightPokemonData, setRightPokemonData] = useState([])
+  useEffect(() => {
+    const loadData = async () => {
+      const results = await fetch('https://pokeapi.co/api/v2/pokemon?limit=20')
+        .then(response => response.json())
+        .then(response => response.results);
+      setLeftPokemonData(results.filter((x, i) => {
+        return i % 2 === 0
+      }))
+      setRightPokemonData(results.filter((x, i) => {
+        return i % 2 !== 0
+      }))
+    }
+    loadData()
+  }, [])
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <div><PokemonList pokemons={leftPokemonData}/></div>
+      <div>Center</div>
+      <div><PokemonList pokemons={rightPokemonData}/></div>
     </div>
   );
 }
